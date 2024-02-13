@@ -29,6 +29,9 @@ export type GitHubProviderProps = {
   clientSecret: BackendSecret;
 };
 
+// Githubprovider OIDC
+// API Gateway
+// Lambda Functions
 export class GitHubProvider extends Construct {
   public api: apigateway.RestApi;
   public apiUrl: string;

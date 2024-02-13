@@ -1,7 +1,8 @@
 import type { APIGatewayProxyHandler } from "aws-lambda";
 
 export const handler: APIGatewayProxyHandler = async (event) => {
-  if (!event.headers["Authorization"]) {
+  const authHeaders = event.headers["Authorization"];
+  if (!authHeaders) {
     return { statusCode: 401, body: "Unauthorized" };
   }
 
@@ -10,8 +11,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
     const response = await fetch("https://api.github.com/user", {
       method: "GET",
       headers: {
-        authorization:
-          "token " + event.headers["Authorization"].split("Bearer ")[1],
+        authorization: "token " + authHeaders.split("Bearer ")[1],
         accept: "application/json",
       },
     });
@@ -22,7 +22,6 @@ export const handler: APIGatewayProxyHandler = async (event) => {
       body: JSON.stringify({ sub: token.id, ...token }),
     };
   } catch (error) {
-    console.log("error", error);
     return {
       statusCode: 500,
       body: JSON.stringify(error),

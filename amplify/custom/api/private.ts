@@ -5,11 +5,12 @@ export const handler: APIGatewayProxyWithCognitoAuthorizerHandler = async (
 ) => {
   return {
     statusCode: 200,
-    body: JSON.stringify("Hello User!!"),
+    body: JSON.stringify({ response: "Works!" }),
     headers: {
       "Access-Control-Allow-Headers": "Content-Type",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+      "content-type": "application/json",
     },
   };
 };

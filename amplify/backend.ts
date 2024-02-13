@@ -15,10 +15,6 @@ backend.auth.resources.userPool.addDomain("cognito-domain", {
   },
 });
 
-// Githubprovider OIDC
-// API Gateway
-// Lambda Functions
-
 const existingStack = Stack.of(backend.auth.resources.userPool);
 
 const { userPool, userPoolClient } = backend.auth.resources;

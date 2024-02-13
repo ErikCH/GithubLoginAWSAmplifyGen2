@@ -34,7 +34,7 @@ export default function Home() {
         },
       },
     }).response;
-    console.log("response", await response.body.text());
+    console.log("response", await response.body.json());
   };
 
   const getCurrentUserInfo = async () => {
